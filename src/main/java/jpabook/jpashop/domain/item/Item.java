@@ -26,4 +26,10 @@ public abstract class Item {
     private int stockQuantity;
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    //==비즈니스 로직==// 상품 재고의 증감
+    public void addStock(int quantity) {
+        this.stockQuantity += quantity;
+    }
+
 }
