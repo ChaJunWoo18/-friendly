@@ -47,6 +47,7 @@ public class ItemServiceTest {
 
     @Test
     public void 상품_전체조회() {
+        //given
         Book book = new Book();
         book.setName("bookA");
         book.setAuthor("authorA");
@@ -55,7 +56,9 @@ public class ItemServiceTest {
         album.setName("albumA");
         Long savedBookId = itemService.saveItem(book);
         Long savedItemId = itemService.saveItem(album);
+        //when
         List<Item> itemList = itemRepository.findAll();
+        //then
         Assertions.assertThat(itemList.size()).isEqualTo(2);
         //System.out.println("itemList = " + itemList);
     }
