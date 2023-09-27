@@ -4,7 +4,7 @@ import Category from './components/category';
 import Mainbanner from './components/Mainbanner';
 import Notice from './components/notice';
 import MemberList from './pages/MemberList';
-import ManagerMatching from './pages/ManagerMatching';
+import ManagerMain from './pages/ManagerMain';
 import { Container } from '@mui/material';
 import styled from 'styled-components';
 
@@ -13,16 +13,16 @@ import styled from 'styled-components';
 function App() {
   return (
     
-    <ScreenWrapper>
-      <Header/>
-      <Mainbanner/>
-      <Banner/>
-      <Category/>
-    </ScreenWrapper>
-
     // <ScreenWrapper>
-    // <ManagerMatching/>
+    //   <Header/>
+    //   <Mainbanner/>
+    //   <Banner/>
+    //   <Category/>
     // </ScreenWrapper>
+
+    <ScreenWrapper>
+    <ManagerMain/>
+    </ScreenWrapper>
     
   );
 }
