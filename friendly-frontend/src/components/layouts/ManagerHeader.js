@@ -1,31 +1,13 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+//import Container from "@mui/material/Container";
+import { Navbar, Nav, Button, Container, Dropdown } from "react-bootstrap";
+//import Button from "@mui/material/Button";
 import styled from "styled-components";
 import SvgIcon from "@mui/material/SvgIcon";
-
-const ManageMatching = () => {
-  // ManageMatching 클릭 이벤트 핸들러 구현
-  // 클릭 시 해당 링크로 이동하도록 할 수 있습니다.
-};
-
-const ManageChat = () => {
-  // ManageChat 클릭 이벤트 핸들러 구현
-};
-
-const ManageMember = () => {
-  // ManageMember 클릭 이벤트 핸들러 구현
-};
-
-const ManageConnect = () => {
-  // ManageConnect 클릭 이벤트 핸들러 구현
-};
-
-const QnA = () => {
-  // QnA 클릭 이벤트 핸들러 구현
-};
+import ManagementMatch from '../../pages/ManagementMatch';
+import ManagementChat from '../../pages/ManagementChat';
 
 function ManagerHeader(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -42,14 +24,20 @@ function ManagerHeader(props) {
   return (
     <div>
       <Containers>
-        <ImageWrapper>
-          <img
-            width="80"
-            src="https://swiperjs.com/demos/images/nature-1.jpg"
-          />
-        </ImageWrapper>
+        <Navbar.Brand>
+          <Nav.Link href="/">
+            <ImageWrapper>
+              <img
+                width="80"
+                src="https://swiperjs.com/demos/images/nature-1.jpg"
+              />
+            </ImageWrapper>
+          </Nav.Link>
+        </Navbar.Brand>
 
         <LogWrapper>
+        <Navbar.Brand>
+          <Nav.Link href="/">
           <SvgIcon
             {...props}
             sx={{
@@ -61,19 +49,27 @@ function ManagerHeader(props) {
           >
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
           </SvgIcon>
+          </Nav.Link>
+        </Navbar.Brand>
         </LogWrapper>
       </Containers>
 
       <BoxWrapper>
         <CategoryWrapper>
-          {/* 각 항목을 Button 요소로 래핑하고 클릭 이벤트 핸들러를 연결 */}
-          <Button onClick={ManageMatching} style={{ color: 'black' }}>매칭 신청 관리</Button>
-          <Button onClick={ManageChat} style={{ color: 'black' }}>채팅 관리</Button>
-          <Button onClick={ManageMember} style={{ color: 'black' }}>회원 목록 관리</Button>
-          <Button onClick={ManageConnect} style={{ color: 'black' }}>회원 연결 관리</Button>
-          <Button onClick={QnA} style={{ color: 'black' }}>문의사항</Button>
+          {/* Nav에 justify-content-between 클래스 추가 */}
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto" style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '300px', marginRight: '50px' }}>
+              <Nav.Link href="/ManagementMatch">매칭 신청 관리</Nav.Link>
+              <Nav.Link href="/ManagementChat">채팅 관리</Nav.Link>
+              <Nav.Link href="/ManagementUserList">회원 목록 관리</Nav.Link>
+              <Nav.Link href="/ManagementConnect">회원 연결 관리</Nav.Link>
+              <Nav.Link href="/ManagementQnA">문의사항</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </CategoryWrapper>
       </BoxWrapper>
+
+
     </div>
   );
 }
@@ -113,7 +109,7 @@ const BoxWrapper = styled.div`
 `;
 
 const CategoryWrapper = styled.div`
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   align-content: center;
   justify-content: space-around;
@@ -121,7 +117,8 @@ const CategoryWrapper = styled.div`
   //height: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
-  border: 1px solid #DFEEDA;
+  border: 1px solid #dfeeda;
   //border-bottom-width: 10px;
-  border-color: #DFEEDA;
+  border-color: #dfeeda;
+  margin-left: 15px;
 `;

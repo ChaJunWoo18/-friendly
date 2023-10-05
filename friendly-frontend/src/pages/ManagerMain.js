@@ -1,54 +1,61 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container, { containerClasses } from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import styled from "styled-components";
-import ManagerProfile from "./ManagerProfile";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ManagerHeader from "../components/layouts/ManagerHeader";
-import ManagerCategory from "./ManagerCategory";
+import ManagerProfile from "./ManagerProfile";
 import ManagementMatch from "./ManagementMatch";
 import ManagementChat from "./ManagementChat";
-import ManagementUserList from './MangementUserList';
-import ManagementConnect from './ManagementConnect';
-import ManagementQnA from './ManagementQnA';
+import ManagementUserList from "./MangementUserList";
+import ManagementConnect from "./ManagementConnect";
+import ManagementQnA from "./ManagementQnA";
+import styled from "styled-components";
 
 function ManagerMain() {
   return (
-    <div>
-      <ManagerHeader />
+    <Router>
+      <div>
+        <ManagerHeader />
 
-      <ViewWrapper>
-      <ProfileWrapper>
-        <ManagerProfile />
-      </ProfileWrapper>
+        <ViewWrapper>
+          <ProfileWrapper>
+            <ManagerProfile />
+          </ProfileWrapper>
 
-      {/* <ManagementMatch /> */} 
-      {/* <ManagementChat/>/ */}
-      {/* <ManagementUserList/> */}
-      {/* <ManagementConnect/> */}
-      <ManagementQnA/>
-
-
-      </ViewWrapper>
-      
-    </div>
+        <TableWrapper>
+          <Routes>
+            <Route path="/ManagementMatch" element= {<ManagementMatch />} />
+            <Route path="/ManagementChat" element={<ManagementChat />} />
+            <Route path="/ManagementUserList" element={<ManagementUserList />} />
+            <Route path="/ManagementConnect" element={<ManagementConnect />} />
+            <Route path="/ManagementQnA" element={<ManagementQnA />} />
+            <Route path="/" element={ <ManagementMatch /> } />
+          </Routes>
+        </TableWrapper>
+        </ViewWrapper>
+      </div>
+    </Router>
   );
 }
 
 export default ManagerMain;
 
-
 const ProfileWrapper = styled.div`
-width: 380px;
-height: 800px;
-margin-top: 70px;
+  width: 380px;
+  height: 800px;
+  margin-top: 70px;
 `;
 
 const ViewWrapper = styled.div`
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-padding-top: 100px;
+  padding-top: 100px;
+`;
+
+const TableWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  width: 1000px;
+
+  padding-top: 100px;
 `;

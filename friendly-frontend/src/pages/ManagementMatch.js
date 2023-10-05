@@ -39,7 +39,7 @@ const rows = [
   createData('5', '멘토링', '매칭 대기', 'ENFP', '2023.09.28'),
 ];
 
-export default function CustomizedTables() {
+export default function ManagementMatch() {
   const theme = useTheme(); // 테마 가져오기
   return (
     <TableContainer component={Paper}>
