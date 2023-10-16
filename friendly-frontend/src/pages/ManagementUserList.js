@@ -8,7 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { createData, rows } from "./ManagementMatchData";
+import { createData, rows } from "./MemberListData";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -28,7 +28,35 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function ManagementMatch() {
+// ManagementChatDetail 컴포넌트 정의
+function ManagementUserListDetail() {
+  const { id } = useParams(); // URL에서 ID 매개변수를 가져옴
+
+  // 해당 ID와 일치하는 행 찾기
+  const selectedRow = rows.find((row) => row.No === id);
+
+  if (!selectedRow) {
+    return <div>해당 ID에 대한 데이터를 찾을 수 없습니다.</div>;
+  }
+
+  return (
+    <div>
+      <h2>No. {selectedRow.No}에 대한 상세 정보</h2>
+      <p>ID: {selectedRow.ID}</p>
+      <p>PassWord: {selectedRow.PassWord}</p>
+      <p>UserName: {selectedRow.UserName}</p>
+      <p>Email: {selectedRow.Email}</p>
+      <p>Area: {selectedRow.Area}</p>
+      <p>Class: {selectedRow.Class}</p>
+      <p>ReportCount: {selectedRow.ReportCount}</p>
+      <p>StopDate: {selectedRow.StopDate}</p>
+      <p>AccountState: {selectedRow.AccountState}</p>
+      <Link to="/CustomizedTables">테이블로 돌아가기</Link>
+    </div>
+  );
+}
+
+export default function ManagementUserList() {
   const theme = useTheme();
   return (
     <TableContainer component={Paper}>
@@ -36,22 +64,22 @@ export default function ManagementMatch() {
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">No.</StyledTableCell>
-            <StyledTableCell align="center">분류</StyledTableCell>
-            <StyledTableCell align="center">신청상태</StyledTableCell>
-            <StyledTableCell align="center">신청자</StyledTableCell>
-            <StyledTableCell align="center">신청날짜</StyledTableCell>
+            <StyledTableCell align="center">상담자/멘티</StyledTableCell>
+            <StyledTableCell align="center">정지 시작 날짜</StyledTableCell>
+            <StyledTableCell align="center">계정 관리</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <StyledTableRow key={row.No}>
               <StyledTableCell component="th" scope="row" align="center">
-                <Link to={`/ManagementMatchDetail/${row.No}`}>{row.No}</Link>
+                <Link to={`/ManagementUserListDetail/${row.No}`}>{row.No}</Link>
               </StyledTableCell>
-              <StyledTableCell align="center">{row.Class}</StyledTableCell>
-              <StyledTableCell align="center">{row.State}</StyledTableCell>
-              <StyledTableCell align="center">{row.Username}</StyledTableCell>
-              <StyledTableCell align="center">{row.Date}</StyledTableCell>
+              <StyledTableCell align="center">{row.UserName}</StyledTableCell>
+              <StyledTableCell align="center">{row.StopDate}</StyledTableCell>
+              <StyledTableCell align="center">
+                {row.AccountState}
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

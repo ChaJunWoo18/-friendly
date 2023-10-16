@@ -4,9 +4,14 @@ import ManagerHeader from "../components/layouts/ManagerHeader";
 import ManagerProfile from "./ManagerProfile";
 import ManagementMatch from "./ManagementMatch";
 import ManagementChat from "./ManagementChat";
-import ManagementUserList from "./MangementUserList";
+import ManagementUserList from "./ManagementUserList";
 import ManagementConnect from "./ManagementConnect";
 import ManagementQnA from "./ManagementQnA";
+import ManagementMatchDetail from "./ManagementMatchDetail";
+import ManagementChatDetail from "./ManagementChatDetail";
+import ManagementUserListDetail from "./ManagementUserListDetail";
+import ManagementConnectDetail from "./ManagementConnectDetail";
+import ManagementQnADetail from "./ManagementQnADetail";
 import styled from "styled-components";
 
 function ManagerMain() {
@@ -27,6 +32,11 @@ function ManagerMain() {
             <Route path="/ManagementUserList" element={<ManagementUserList />} />
             <Route path="/ManagementConnect" element={<ManagementConnect />} />
             <Route path="/ManagementQnA" element={<ManagementQnA />} />
+            <Route path="/ManagementMatchDetail/:No" element={<ManagementMatchDetail />} />
+            <Route path="/ManagementChatDetail/:No" element={<ManagementChatDetail />} />
+            <Route path="/ManagementUserListDetail/:No" element={<ManagementUserListDetail />} />
+            <Route path="/ManagementConnectDetail/:No" element={<ManagementConnectDetail />} />
+            <Route path="/ManagementQnADetail/:State" element={<ManagementQnADetail />} />
             <Route path="/" element={ <ManagementMatch /> } />
           </Routes>
         </TableWrapper>
@@ -48,7 +58,7 @@ const ViewWrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  padding-top: 100px;
+  padding-top: 10px;
 `;
 
 const TableWrapper = styled.div`
